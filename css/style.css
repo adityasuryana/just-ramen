@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'cotta';
+    src: url('../assets/font/cotta.otf');
+}
+
+@font-face {
+    font-family: 'prosans';
+    src: url('../assets/font/Product-Sans.ttf');
+}
+
+body {
+  background-color: #FAF6ED;
+}
+
+.mt-10 {
+  margin-top: 10rem;
+}
+
+.header-img {
+  width: 100%;
+}
+
+.navbar-brand {
+  font-family: 'cotta';
+  color: #506760 !important;
+  font-size: 26px;
+  line-height: 29px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.nav-link {
+  font-family: 'prosans';
+  color: #42544D !important;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+}
+
+.header-home h1 {
+  font-family: 'cotta';
+  color: #506760 !important;
+  font-size: 48px;
+  line-height: 53px;
+  letter-spacing: -0.02em;
+}
+
+.header-home p {
+  font-family: 'prosans';
+  font-size: 20px;
+  line-height: 24px;
+  color: #A4A4A4;
+}
+
+.want-ramen {
+  font-family: 'cotta';
+  font-size: 22px;
+  line-height: 24px;
+  color: #FD7E1C;
+}
