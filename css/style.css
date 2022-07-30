@@ -12,6 +12,14 @@ body {
   background-color: #FAF6ED;
 }
 
+.footer {
+  background-color: #F1EFE7;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
 .z-index-min {
   z-index: -100;
 }
@@ -158,7 +166,6 @@ body {
   box-shadow: 6px 4px 9px rgba(0, 0, 0, 0.05);
 }
 
-
 .form-container form h3{
    font-family: 'prosans';
    font-style: normal;
@@ -202,4 +209,20 @@ body {
 
 .form-container form p a{
   color:#FD7E1C;
+}
+
+.nav-col {
+  font-family: 'cotta';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+  color: #506760;
+}
+
+.desc {
+  font-family: 'prosans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #506760;
 }
