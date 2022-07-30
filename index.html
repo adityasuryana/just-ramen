@@ -98,7 +98,7 @@
         </div>
 
         <div class="splide" role="group" aria-label="Splide Basic HTML Example">
-          <div class="splide__track p-5">
+          <div class="splide__track pt-3 p-5">
         		<ul class="splide__list">
         			<li class="splide__slide px-4">
                 <div class="card py-5">
@@ -177,6 +177,15 @@
       height: '100%',
       padding: '3rem',
       rewind : true,
+      breakpoints: {
+  			766: {
+  				perPage: 1,
+          autoplay: true,
+        },
+        1000: {
+  				perPage: 2,
+        },
+      }
       } );
 
       splide.mount();
