@@ -7,42 +7,14 @@
     <title>just ramen</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="splide/css/splide.min.css">
+    <script type="text/javascript" src="splide/js/splide.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
   </head>
   <body>
 
-    <!-- <nav class="navbar navbar-light navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand mx-auto" href="#">just ramen</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="navbar-brand offcanvas-title" id="offcanvasNavbarLabel">just ramen</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item me-3">
-                <a class="nav-link" href="#">Menu</a>
-              </li>
-              <li class="nav-item me-3">
-                <a class="nav-link" href="#">Promo</a>
-              </li>
-              <li class="nav-item me-3">
-                <a class="nav-link" href="#">Cart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav> -->
-
-
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light py-4">
       <div class="container">
         <a class="navbar-brand mx-auto" href="index.html">just ramen</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,46 +50,137 @@
             </div>
 
             <div class="header-link">
-              <a class="want-ramen mt-5" href="#">i want ramen!<img class="ms-3" src="assets/icon/left-rounded-arrow.svg" alt=""></a>
+              <a class="want-ramen" href="#">i want ramen!<img class="ms-3" src="assets/icon/left-rounded-arrow.svg" alt=""></a>
             </div>
           </div>
         </div>
 
         <div class="col-1 d-none d-xxl-block"></div>
 
-        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-4 col-sm-12">
-          <div class="mt-5">
+        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-4 d-none d-sm-none d-md-block d-lg-block">
+          <div class="mt-4">
+            <!-- <img class="z-index-min position-absolute" src="assets/icon/blob-right.svg" alt=""> -->
             <img class="header-img" src="assets/img/ramen-head.svg" alt="">
           </div>
         </div>
       </div>
 
       <div class="row align-items-center mt-5">
-        <div class="col">
-          <div class="card text-center">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 my-3">
+          <div class="card lil-card">
             <span class="mb-3"><img class="" src="assets/icon/clock-rounded.svg" alt=""></span>
-            <p>10:00 am - 8.00 pm</p>
-            <p>Monday to Sunday</p>
+            <p class="title">10:00 am - 8.00 pm</p>
+            <p class="sub-title mb-0">Monday to Sunday</p>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card text-center">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 my-3">
+          <div class="card lil-card">
             <span class="mb-3"><img class="" src="assets/icon/location-rounded.svg" alt=""></span>
-            <p>Bahureksa 10, Bandung</p>
-            <p class="mb-0">Get directions</p>
+            <p class="title">Bahureksa 10, Bandung</p>
+            <p class="sub-title mb-0">Get directions</p>
           </div>
         </div>
 
-        <div class="col">
-          <div class="card text-center">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 my-3">
+          <div class="card lil-card">
             <span class="mb-3"><img class="" src="assets/icon/phone-rounded.svg" alt=""></span>
-            <p>+62 888 909 767</p>
-            <p>Reservation</p>
+            <p class="title">+62 888 909 767</p>
+            <p class="sub-title mb-0">Reservation</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row my-5">
+        <div class="menu text-center">
+          <p class="sub-title mb-2">Menu</p>
+          <p class="title">Explore Our Best Menu</p>
+        </div>
+
+        <div class="splide" role="group" aria-label="Splide Basic HTML Example">
+          <div class="splide__track p-5">
+        		<ul class="splide__list">
+        			<li class="splide__slide px-4">
+                <div class="card py-5">
+                  <img class="menu-img w-100" src="assets/img/cold-hiyasi.png" alt="">
+                  <div class="text-center mt-4">
+                    <h5 class="menu-title">Cold Hiyasi</h5>
+                    <p class="menu-desc">Chilled noodles topped with been sprouts, cucumber, tomatoes, chicken, ham and soft boiled egg. Served with home made sesame vinegar sauce and japanese hot mustard.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+        			<li class="splide__slide px-4">
+                <div class="card py-5">
+                  <img class="menu-img w-100" src="assets/img/vegan-ramen.png" alt="">
+                  <div class="text-center mt-4">
+                    <h5 class="menu-title">Vegan Ramen</h5>
+                    <p class="menu-desc">Light clear Japanese kelp and mushroom based soup with fried tofu skin, baby corn, bamboo, carrots, cabbage, mushrooms, bok choy, bean sprouts and green onions.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+        			<li class="splide__slide px-4">
+                <div class="card py-5">
+                  <img class="menu-img w-100" src="assets/img/spicy-miso.png" alt="">
+                  <div class="text-center mt-4">
+                    <h5 class="menu-title">Spicy Miso</h5>
+                    <p class="menu-desc">Rich pork bone soup with Japanese spicy miso, topped with thinly sliced pork, soft boiled egg, bamboo, carrots, cabbage, mushrooms, green onions, bok choy, bean sprouts and fish cake.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="splide__slide px-4">
+                <div class="card py-5">
+                  <img class="menu-img w-100" src="assets/img/tan-tan-men.png" alt="">
+                  <div class="text-center mt-4">
+                    <h5 class="menu-title">Tan-Tan Men</h5>
+                    <p class="menu-desc">Rich pork bone soup with spicy, sesame and nutty flavors topped with ground pork, soft boiled egg, bok choy and bean sprouts, served hot.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="splide__slide px-4" width="auto">
+                <div class="card py-5">
+                  <img class="menu-img w-100" src="assets/img/tonkotsu.png" alt="">
+                  <div class="text-center mt-4">
+                    <h5 class="menu-title">Tonkotsu</h5>
+                    <p class="menu-desc">Rich pork bone soup base with hints of Japanese soy sauce topped with chashu pork, soft boiled egg, green onions, bean sprouts, and ginger.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="splide__slide px-4">
+                <div class="card py-5">
+                  <img class="menu-img w-100" src="assets/img/shio-chicken-ramen.png" alt="">
+                  <div class="text-center mt-4">
+                    <h5 class="menu-title">Shio Chicken Ramen</h5>
+                    <p class="menu-desc">Light clear chicken soup topped with chicken chashu, soft boiled egg, bean sprouts, dried seaweeds and green onions, served fresh and hot.
+                    </p>
+                  </div>
+                </div>
+              </li>
+        		</ul>
           </div>
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      var splide = new Splide( '.splide', {
+      perPage: 3,
+      height: '100%',
+      padding: '3rem',
+      rewind : true,
+      } );
+
+      splide.mount();
+    </script>
 
     <script src="js/bootstrap.js" charset="utf-8"></script>
   </body>
