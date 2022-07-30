@@ -12,6 +12,10 @@ body {
   background-color: #FAF6ED;
 }
 
+.z-index-min {
+  z-index: -100;
+}
+
 .mt-10 {
   margin-top: 10rem;
 }
@@ -56,7 +60,7 @@ body {
 }
 
 .header-link {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .want-ramen {
@@ -78,6 +82,71 @@ body {
   box-shadow: 6px 4px 9px rgba(0, 0, 0, 0.05);
   border: none;
   border-radius: 15px;
+}
+
+.lil-card {
+  text-align: center;
+  font-family: 'prosans';
+}
+
+.lil-card .title {
+  color: #506760;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.1em;
+}
+
+.lil-card .sub-title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.1em;
+  color: #A4A4A4;
+}
+
+.menu .sub-title {
+  font-family: 'prosans';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+  color: #A4A4A4;
+}
+
+.menu .title {
+  font-family: 'cotta';
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 31px;
+  color: #506760;
+}
+
+.menu-img {
+  max-width: 180px;
+  min-width: 100px;
+  align-self: center;
+}
+
+.menu-title {
+  font-family: 'cotta';
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: #506760;
+  margin-bottom: 1rem;
+}
+
+.menu-desc {
+  font-family: 'prosans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #A4A4A4;
+  margin-bottom: 0px;
 }
 
 .form-container {
