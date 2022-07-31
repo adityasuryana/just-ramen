@@ -226,3 +226,17 @@ body {
   line-height: 25px;
   color: #506760;
 }
+
+.splide__arrow {
+  background-color: #FD7E1C!important;
+}
+
+.splide__arrow svg {
+    fill: white!important;
+    height: 0.6em!important;
+    width: 0.6em!important;
+}
+
+.splide__pagination__page.is-active {
+  background: #FD7E1C!important;
+}
