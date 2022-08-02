@@ -331,7 +331,6 @@ body {
 	overflow-y: auto;
 }
 #content main .head-title {
-	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	grid-gap: 16px;
@@ -445,7 +444,7 @@ body {
 	display: flex;
 	align-items: center;
 	grid-gap: 16px;
-	margin-bottom: 24px;
+	margin-bottom: 15px;
 }
 #content main .table-data .head h3 {
 	margin-right: auto;
@@ -507,7 +506,7 @@ body {
 
 
 #content main .table-data .todo {
-	flex-grow: 1;
+  height: fit-content;
 	flex-basis: 300px;
 }
 #content main .table-data .todo .todo-list {

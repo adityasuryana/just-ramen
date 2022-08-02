@@ -8,6 +8,16 @@
     src: url('../assets/font/Product-Sans.ttf');
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 body {
   background-color: #FAF6ED;
 }
@@ -227,6 +237,15 @@ body {
   color: #506760;
 }
 
+.btn-green {
+  background-color: #506760;
+  color: white;
+}
+
+.btn-green:hover {
+  color: white;
+}
+
 .splide__arrow {
   background-color: #FD7E1C!important;
 }
@@ -237,6 +256,52 @@ body {
     width: 0.6em!important;
 }
 
+.dataTables_wrapper .dataTables_filter input {
+  border-radius: 10px!important;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+  border-color: var(--green);
+  outline: none;
+}
+
+.dataTables_length label select {
+  border-radius: 10px!important;
+}
+
 .splide__pagination__page.is-active {
   background: #FD7E1C!important;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: left!important;
+  text-align: left!important;
+  margin-bottom: 1.5rem;
+}
+
+.dataTables_wrapper .dataTables_length {
+  float: right!important;
+}
+
+.dataTables_info {
+  display: none ;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+  margin-top: 10px;
+  float: none!important;
+  text-align: center!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  border-radius: 10px;
+  background: var(--light) !important;
+}
+
+.jsCalendar table {
+  background-color: transparent!important;
+}
+
+.jsCalendar tbody td.jsCalendar-current {
+  background-color: var(--green)!important;
 }
