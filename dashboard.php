@@ -7,9 +7,9 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="css/jsCalendar.css">
 	<link rel="stylesheet" href="css/style-beta.css">
 
@@ -17,40 +17,49 @@
 </head>
 <body>
 
+	<?php
+		include 'config.php';
+		$users = mysqli_query($conn,"select * from users");
+		$menus = mysqli_query($conn, "select * from menu");
+
+		$total_menu = mysqli_num_rows($menus);
+		$total_user = mysqli_num_rows($users);
+
+	?>
 
 	<!-- SIDEBAR -->
-	<section id="sidebar">
+	<section id="sidebar" class="hide">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="ml-2">just ramen</span>
 		</a>
 		<ul class="side-menu top ps-0">
 			<li class="active">
-				<a href="dashboard.html">
+				<a href="dashboard.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="account.html">
+				<a href="account.php">
 					<i class='bx bxs-user-badge'></i>
 					<span class="text">Accounts</span>
 				</a>
 			</li>
 			<li>
-				<a href="menu.html">
+				<a href="menu.php">
 					<i class='bx bxs-food-menu' ></i>
 					<span class="text">Menu</span>
 				</a>
 			</li>
 			<li>
-				<a href="stock.html">
+				<a href="stock.php">
 					<i class='bx bx-task'></i>
 					<span class="text">Stocks</span>
 				</a>
 			</li>
 			<li>
-				<a href="inventory.html">
+				<a href="inventory.php">
 					<i class='bx bxs-package' ></i>
 					<span class="text">Inventory</span>
 				</a>
@@ -92,14 +101,14 @@
 				<li>
 					<i class='bx bxs-food-menu'></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3><?php echo $total_menu; ?></h3>
 						<p>Total Menu</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3><?php echo $total_user; ?></h3>
 						<p>Accounts</p>
 					</span>
 				</li>
@@ -121,19 +130,15 @@
 						</thead>
 						<tbody>
 							<?php
-								require ("config.php");
-								$users = mysqli_query($conn,'select * from users');
-								while($d = mysqli_fetch_array($users)){
-									?>
-									<tr>
-										<td><?php echo $d['username']; ?></td>
-										<td><?php echo $d['email']; ?></td>
-										<td><?php echo $d['password']; ?></td>
-										<td align=center></td>
-									</tr>
-								<?php
-								}
-								?>
+					        while($row = mysqli_fetch_array($users))
+					        {
+					            echo "<tr>
+					            <td>".$row['username']."</td>
+					            <td>".$row['email']."</td>
+					            <td>".$row['password']."</td>
+					        </tr>";
+					        }
+					    ?>
 						</tbody>
 					</table>
 				</div>
@@ -151,6 +156,8 @@
 	<script type="text/javascript">
 			$(document).ready( function () {
 			$('#table').DataTable({
+				pageLength: 5,
+				lengthMenu: [[5, 10, 20, -1], [5, 10, 15, 'All']],
 				paging: true,
 				searching: true,
 				ordering: true,
