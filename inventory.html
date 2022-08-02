@@ -7,10 +7,12 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 	<link rel="stylesheet" href="css/style-beta.css">
 
-	<title>Menu | just ramen</title>
+	<title>Inventory | just ramen</title>
 </head>
 <body>
 
@@ -21,7 +23,7 @@
 			<i class='bx bxs-smile'></i>
 			<span class="ml-2">just ramen</span>
 		</a>
-		<ul class="side-menu top">
+		<ul class="side-menu top ps-0">
 			<li>
 				<a href="dashboard.html">
 					<i class='bx bxs-dashboard' ></i>
@@ -30,30 +32,30 @@
 			</li>
 			<li>
 				<a href="account.html">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-user-badge'></i>
 					<span class="text">Accounts</span>
 				</a>
 			</li>
 			<li>
 				<a href="menu.html">
-					<i class='bx bxs-doughnut-chart' ></i>
+					<i class='bx bxs-food-menu' ></i>
 					<span class="text">Menu</span>
 				</a>
 			</li>
 			<li>
 				<a href="stock.html">
-					<i class='bx bxs-message-dots' ></i>
+					<i class='bx bx-task'></i>
 					<span class="text">Stocks</span>
 				</a>
 			</li>
 			<li class="active">
 				<a href="inventory.html">
-					<i class='bx bxs-group' ></i>
+					<i class='bx bxs-package' ></i>
 					<span class="text">Inventory</span>
 				</a>
 			</li>
 		</ul>
-		<ul class="side-menu">
+		<ul class="side-menu ps-0">
 			<li>
 				<a href="login.html" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
@@ -70,9 +72,9 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 
-			<p class="name">Halo, Reza!</p>
+			<p class="name mb-0">Halo, Reza!</p>
 			<div class="ml-auto">
-				<p class="title">Restaurant Management System</p>
+				<p class="title mb-0">Restaurant Management System</p>
 			</div>
 		</nav>
 		<!-- NAVBAR -->
@@ -83,15 +85,42 @@
 				<div class="left">
 					<h1>Inventory</h1>
 				</div>
+
+				<button type="button" class="btn btn-green mt-2" data-bs-toggle="modal" data-bs-target="#addInventory">
+					<span><i class='bx bx-plus me-1' ></i></span>Inventory
+				</button>
+
+				<div class="modal fade" id="addInventory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="staticBackdropLabel">New Inventory</h5>
+				      </div>
+				      <div class="modal-body">
+								<form>
+									<div class="mb-3">
+								    <label for="item" class="form-label">Item</label>
+								    <input type="text" class="form-control" id="item" aria-describedby="emailHelp">
+								  </div>
+								  <div class="mb-3">
+								    <label for="total" class="form-label">Total</label>
+								    <input type="number" class="form-control" id="total" aria-describedby="emailHelp">
+								  </div>
+								  <div class="mb-3">
+								    <label for="desc" class="form-label">Description</label>
+								    <textarea class="form-control" id="desc" rows="3"></textarea>
+								  </div>
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+								  <button type="submit" class="btn btn-primary float-end">Add</button>
+								</form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
 
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
-						<h3>All Account</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
 					<table id="table">
 						<thead>
 							<tr>
@@ -151,12 +180,18 @@
 	<!-- CONTENT -->
 
 	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js" charset="utf-8"></script>
 	<script type="text/javascript">
 			$(document).ready( function () {
 			$('#table').DataTable({
 				paging: true,
 				searching: true,
-				ordering: true
+				ordering: true,
+				stateSave: true,
+				language: {
+					search: '',
+					searchPlaceholder: "Search",
+					"lengthMenu": "Show _MENU_" },
 			});
 		} );
 	</script>
