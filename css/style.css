@@ -246,14 +246,21 @@ body {
   color: white;
 }
 
+
+
+.btn-red {
+  background-color: red;
+  color white;
+}
+
 .splide__arrow {
   background-color: #FD7E1C!important;
 }
 
 .splide__arrow svg {
-    fill: white!important;
-    height: 0.6em!important;
-    width: 0.6em!important;
+  fill: white!important;
+  height: 0.6em!important;
+  width: 0.6em!important;
 }
 
 .dataTables_wrapper .dataTables_filter input {
@@ -291,6 +298,13 @@ body {
   margin-top: 10px;
   float: none!important;
   text-align: center!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: #333 !important;
+  border-radius: 10px;
+  background: var(--light)!important;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {

@@ -60,6 +60,16 @@ body {
 	margin-left: auto;
 }
 
+.btn-edit {
+  background-color: #FD7E1C!important;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #FD7E1C!important;
+  color: white;
+}
+
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
