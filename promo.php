@@ -45,7 +45,7 @@
       <h1 class="promo-title my-4">Promo</h1>
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card" style="background: white;">
             <div class="table-data">
       				<div class="order">
       					<table id="table_promo" class="border-bottom-0" style="border-collapse: separate; border-spacing: 1em;">
