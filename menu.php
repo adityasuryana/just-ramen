@@ -70,6 +70,12 @@ header("location:login.php");
 					<span class="text">Inventory</span>
 				</a>
 			</li>
+			<li>
+				<a href="promo-dashboard.php">
+					<i class='bx bxs-discount'></i>
+					<span class="text">Promo</span>
+				</a>
+			</li>
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>

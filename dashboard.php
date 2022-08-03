@@ -32,9 +32,11 @@ header("location:login.php");
 		include 'config.php';
 		$users = mysqli_query($conn,"select * from users");
 		$menus = mysqli_query($conn, "select * from menu");
+		$promos = mysqli_query($conn, "select * from promo");
 
 		$total_menu = mysqli_num_rows($menus);
 		$total_user = mysqli_num_rows($users);
+		$total_promo = mysqli_num_rows($promos)
 
 	?>
 
@@ -75,6 +77,12 @@ header("location:login.php");
 					<span class="text">Inventory</span>
 				</a>
 			</li>
+			<li>
+				<a href="promo-dashboard.php">
+					<i class='bx bxs-discount'></i>
+					<span class="text">Promo</span>
+				</a>
+			</li>
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>
@@ -113,14 +121,21 @@ header("location:login.php");
 					<i class='bx bxs-food-menu'></i>
 					<span class="text">
 						<h3><?php echo $total_menu; ?></h3>
-						<p>Total Menu</p>
+						<p>Menu</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
 						<h3><?php echo $total_user; ?></h3>
-						<p>Accounts</p>
+						<p>Account</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-discount' ></i>
+					<span class="text">
+						<h3><?php echo $total_promo; ?></h3>
+						<p>Promo</p>
 					</span>
 				</li>
 			</ul>
