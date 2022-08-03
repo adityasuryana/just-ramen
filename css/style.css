@@ -356,3 +356,8 @@ th .sorting_disabled {
   font-weight: 500;
   text-align: justify;
 }
+
+#content main .table-data .order table td img {
+  border-radius: 0px!important;
+  max-height: 180px!important;
+}
