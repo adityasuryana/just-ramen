@@ -62,13 +62,13 @@
       											<tr class=''>
       						            <td class='promo-card'>
                                 <div class='row'>
-                                  <div class='col-10'>
-                                    <h3 class='promo-title'>".$row['title_promo']."</h3>
+                                  <div class='col-8'>
+                                    <h1 class='promo-title'>".$row['title_promo']."</h1>
                                     <p class='promo-desc mb-0'>".$row['desc_promo']."</p>
                                   </div>
 
-                                  <div class='col-2'>
-                                    <img src='assets/img/promo/".$row['img_promo']."'></img>
+                                  <div class='col-4 text-end'>
+                                    <img class='' style='max-height: 180px;' src='assets/img/promo/".$row['img_promo']."'></img>
                                   </div>
                                 </div>
 
