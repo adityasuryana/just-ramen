@@ -1,3 +1,14 @@
+<?php
+//memulai session yang disimpan pada browser
+session_start();
+
+//cek apakah sesuai status sudah login? kalau belum akan kembali ke form login
+if($_SESSION['status']!="sudah_login"){
+//melakukan pengalihan
+header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +28,9 @@
 <body>
 
 	<?php
-		include 'config.php';
-		$no = 1;
-		$stok = mysqli_query($conn,"select * from stok");
-
+		require_once('config.php');
+		$sql = "SELECT * FROM stok";
+		$result = mysqli_query($conn, $sql);
 	?>
 
 	<!-- SIDEBAR -->
@@ -63,7 +73,7 @@
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>
-				<a href="login.html" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -78,7 +88,7 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 
-			<p class="name mb-0">Halo, Reza!</p>
+			<p class="name mb-0">Halo, <?php echo $_SESSION['username']; ?>!</p>
 			<div class="ml-auto">
 				<p class="title mb-0">Restaurant Management System</p>
 			</div>
@@ -103,7 +113,7 @@
 				        <h5 class="modal-title" id="staticBackdropLabel">New Stock</h5>
 				      </div>
 				      <div class="modal-body">
-								<form method="POST" action="stock_process.php?act=addStock">
+								<form method="POST" action="process/stock_db/insert_data.php">
 									<div class="mb-3">
 								    <label for="material" class="form-label">Material</label>
 								    <input type="text" class="form-control" name="nama_bahan" id="material">
@@ -137,18 +147,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-					        while($row = mysqli_fetch_assoc($stok))
-					        {
-					            echo "
-											<tr>
-						            <td>".$row['nama_bahan']."</td>
-						            <td>".$row['jumlah']."</td>
-						            <td>".$row['deskripsi']."</td>
-												<td></td>
-					        		</tr>";
-					        }
-					    ?>
+							<?php while($stok = mysqli_fetch_assoc($result)) { ?>
+								<tr>
+									<td><?php echo $stok['nama_bahan']; ?></td>
+									<td><?php echo $stok['jumlah']; ?></td>
+									<td><?php echo $stok['deskripsi']; ?></td>
+									<td>
+										<a class="btn btn-edit me-2" href="process/stock_db/update_data_form.php?id=<?php echo $stok['id']; ?>"><i class="bx bxs-edit"></i></a>
+										<a class="btn btn-danger" href="process/stock_db/delete_data.php?id=<?php echo $stok['id']; ?>"><i class="bx bxs-trash"></i></a></td>
+									</td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -169,13 +178,6 @@
 				searching: true,
 				ordering: true,
 				stateSave: true,
-				columnDefs: [
-						{
-								targets: -1,
-								data: null,
-								defaultContent: '<button class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editMenu"><i class="bx bxs-edit"></i></button><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMenu"><i class="bx bxs-trash"></i></button>',
-						},
-				],
 				language: {
 					search: '',
 					searchPlaceholder: "Search",

@@ -1,3 +1,14 @@
+<?php
+//memulai session yang disimpan pada browser
+session_start();
+
+//cek apakah sesuai status sudah login? kalau belum akan kembali ke form login
+if($_SESSION['status']!="sudah_login"){
+//melakukan pengalihan
+header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,15 +28,14 @@
 <body>
 
 	<?php
-		include 'config.php';
-		$users = mysqli_query($conn,"select * from users");
-
-		$total_user = mysqli_num_rows($users);
+		require_once('config.php');
+		$sql = "SELECT * FROM users";
+		$result = mysqli_query($conn,$sql);
 	?>
 
 	<!-- SIDEBAR -->
 	<section id="sidebar" class="hide">
-		<a href="#" class="brand">
+		<a href="index.php" class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="ml-2">just ramen</span>
 		</a>
@@ -63,7 +73,7 @@
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>
-				<a href="login.html" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -78,7 +88,7 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 
-			<p class="name mb-0">Halo, Reza!</p>
+			<p class="name mb-0">Halo, <?php echo $_SESSION['username']; ?>!</p>
 			<div class="ml-auto">
 				<p class="title mb-0">Restaurant Management System</p>
 			</div>
@@ -104,7 +114,7 @@
 				        <h5 class="modal-title">New Account</h5>
 				      </div>
 				      <div class="modal-body">
-								<form id="accountForm" method="POST" action="account_process.php?act=addAccount">
+								<form id="accountForm" method="POST" action="process/account_db/insert_data.php">
 									<div class="">
 										<input type="text" name="id" hidden>
 									</div>
@@ -141,75 +151,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-					        while($row = mysqli_fetch_assoc($users))
-					        {
-					            echo "
-											<tr>
-						            <td>".$row['username']."</td>
-						            <td>".$row['email']."</td>
-						            <td>".$row['password']."</td>
-												<td></td>
-					        		</tr>";
-					        }
-					    ?>
+							<?php while($user = mysqli_fetch_assoc($result)) { ?>
+								<tr>
+									<td><?php echo $user['username']; ?></td>
+									<td><?php echo $user['email']; ?></td>
+									<td><?php echo $user['password']; ?></td>
+									<td>
+										<a class="btn btn-edit me-2" href="process/account_db/update_data_form.php?id=<?php echo $user['id']; ?>"><i class="bx bxs-edit"></i></a>
+										<a class="btn btn-danger" href="process/account_db/delete_data.php?id=<?php echo $user['id']; ?>"><i class="bx bxs-trash"></i></a>
+									</td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
-				</div>
-			</div>
-
-			<div class="modal fade" id="editAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Edit Account</h5>
-						</div>
-						<div class="modal-body">
-							<form id="editAccountForm" role="form" method="POST" action="account_process.php?act=editAccount">
-								<?php
-									$id = isset($_POST['id']) ? $_POST['id'] : '';
-								 	$query = "SELECT * FROM users WHERE id='$id'";
-								 	$result = mysqli_query($conn, $query);
-            		?>
-
-								<div class="">
-									<input type="text" name="id" hidden>
-								</div>
-								<div class="mb-3">
-									<label for="name" class="form-label">Name</label>
-									<input type="text" name="username" class="form-control" id="name" value="<?php echo $row['username']; ?>" required>
-								</div>
-								<div class="mb-3">
-									<label for="email" class="form-label">Email address</label>
-									<input type="email" name="email" class="form-control" id="email" value="<?php echo $row['email']; ?>" required>
-								</div>
-								<div class="mb-3">
-									<label for="password" class="form-label">Password</label>
-									<input type="password" name="password" class="form-control" id="password" value="<?php echo $row['password']; ?>" required>
-								</div>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-								<button type="submit" class="btn btn-primary float-end" value="update">Update</button>
-							</form>
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="modal fade" id="deleteAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Delete Account</h5>
-						</div>
-						<div class="modal-body">
-							<h4>Delete <?php echo $row['username'];?> from database?</h4>
-						</div>
-						<div class="modal-footer">
-	            <button id="nodelete" type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Cancel</button>
-	            <a href="account_process.php?act=deleteAccount&id=<?php echo $row['id']; ?>" class="btn btn-primary">Delete</a>
-	          </div>
-					</div>
 				</div>
 			</div>
 		</main>
@@ -228,13 +182,6 @@
 				searching: true,
 				ordering: true,
 				stateSave: true,
-				columnDefs: [
-            {
-                targets: -1,
-                data: null,
-                defaultContent: '<button class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editAccount"><i class="bx bxs-edit"></i></button><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount"><i class="bx bxs-trash"></i></button>',
-            },
-        ],
 				language: {
 					search: '',
 					searchPlaceholder: "Search",

@@ -1,3 +1,14 @@
+<?php
+//memulai session yang disimpan pada browser
+session_start();
+
+//cek apakah sesuai status sudah login? kalau belum akan kembali ke form login
+if($_SESSION['status']!="sudah_login"){
+//melakukan pengalihan
+header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +28,9 @@
 <body>
 
 	<?php
-		include 'config.php';
-		$no = 1;
-		$inventory = mysqli_query($conn,"select * from inventory");
-
+		require_once('config.php');
+		$sql = "SELECT * FROM inventory";
+		$result = mysqli_query($conn, $sql);
 	?>
 
 	<!-- SIDEBAR -->
@@ -63,7 +73,7 @@
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>
-				<a href="login.html" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -78,7 +88,7 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 
-			<p class="name mb-0">Halo, Reza!</p>
+			<p class="name mb-0">Halo, <?php echo $_SESSION['username']; ?>!</p>
 			<div class="ml-auto">
 				<p class="title mb-0">Restaurant Management System</p>
 			</div>
@@ -103,7 +113,7 @@
 				        <h5 class="modal-title" id="staticBackdropLabel">New Inventory</h5>
 				      </div>
 				      <div class="modal-body">
-								<form method="POST" action="inventory_process.php?act=addInventory">
+								<form method="POST" action="process/inventory_db/insert_data.php">
 									<input type="text" class="form-control" name="id" hidden>
 									<div class="mb-3">
 								    <label for="item" class="form-label">Item</label>
@@ -138,18 +148,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-					        while($row = mysqli_fetch_assoc($inventory))
-					        {
-										echo "
-										<tr>
-											<td>".$row['nama_barang']."</td>
-											<td>".$row['jumlah']."</td>
-											<td>".$row['deskripsi']."</td>
-											<td></td>
-										</tr>";
-					        }
-					    ?>
+							<?php while($inventory = mysqli_fetch_assoc($result)) { ?>
+								<tr>
+									<td><?php echo $inventory['nama_barang']; ?></td>
+									<td><?php echo $inventory['jumlah']; ?></td>
+									<td><?php echo $inventory['deskripsi']; ?></td>
+									<td>
+										<a class="btn btn-edit me-2" href="process/inventory_db/update_data_form.php?id=<?php echo $inventory['id']; ?>"><i class="bx bxs-edit"></i></a>
+										<a class="btn btn-danger" href="process/inventory_db/delete_data.php?id=<?php echo $inventory['id']; ?>"><i class="bx bxs-trash"></i></a>
+									</td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -170,13 +179,6 @@
 				searching: true,
 				ordering: true,
 				stateSave: true,
-				columnDefs: [
-						{
-								targets: -1,
-								data: null,
-								defaultContent: '<button class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editInventory"><i class="bx bxs-edit"></i></button><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteInventory"><i class="bx bxs-trash"></i></button>',
-						},
-				],
 				language: {
 					search: '',
 					searchPlaceholder: "Search",

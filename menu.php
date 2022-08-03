@@ -1,3 +1,14 @@
+<?php
+//memulai session yang disimpan pada browser
+session_start();
+
+//cek apakah sesuai status sudah login? kalau belum akan kembali ke form login
+if($_SESSION['status']!="sudah_login"){
+//melakukan pengalihan
+header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +28,9 @@
 <body>
 
 	<?php
-		include 'config.php';
-		$no = 1;
-		$menu = mysqli_query($conn,"select * from menu");
-
+		require_once('config.php');
+		$sql = "SELECT * FROM menu";
+		$result = mysqli_query($conn, $sql);
 	?>
 
 	<!-- SIDEBAR -->
@@ -63,7 +73,7 @@
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>
-				<a href="login.html" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -78,7 +88,7 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 
-			<p class="name mb-0">Halo, Reza!</p>
+			<p class="name mb-0">Halo, <?php echo $_SESSION['username']; ?>!</p>
 			<div class="ml-auto">
 				<p class="title mb-0">Restaurant Management System</p>
 			</div>
@@ -103,7 +113,7 @@
 				        <h5 class="modal-title" id="staticBackdropLabel">New Menu</h5>
 				      </div>
 				      <div class="modal-body">
-								<form method="POST" action="menu_process.php?act=addMenu">
+								<form method="POST" action="process/menu_db/insert_data.php">
 									<input type="text" class="form-control" name="id" hidden>
 									<div class="mb-3">
 								    <label for="menu" class="form-label">Menu</label>
@@ -131,85 +141,25 @@
 					<table id="table">
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+								<th>Menu</th>
+								<th>Price</th>
+								<th>Description</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-					        while($row = mysqli_fetch_assoc($menu))
-					        {
-					            echo "
-											<tr>
-						            <td>".$row['menu']."</td>
-						            <td>".$row['harga']."</td>
-						            <td>".$row['deskripsi']."</td>
-												<td></td>
-					        		</tr>";
-					        }
-					    ?>
+							<?php while($menu = mysqli_fetch_assoc($result)) { ?>
+								<tr>
+									<td><?php echo $menu['menu']; ?></td>
+									<td><?php echo $menu['harga']; ?></td>
+									<td><?php echo $menu['deskripsi']; ?></td>
+									<td>
+										<a class="btn btn-edit me-2" href="process/menu_db/update_data_form.php?id=<?php echo $menu['id']; ?>"><i class="bx bxs-edit"></i></a>
+										<a class="btn btn-danger" href="process/menu_db/delete_data.php?id=<?php echo $menu['id']; ?>"><i class="bx bxs-trash"></i></a></td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
-				</div>
-			</div>
-
-			<div class="modal fade" id="editMenu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Edit Account</h5>
-						</div>
-						<div class="modal-body">
-							<form id="editMenuForm" role="form" method="POST" action="menu_process.php?act=editMenu">
-								<?php
-									$id = $row['id'];
-									$query = "SELECT * FROM menu WHERE id='$id'";
-									$result = mysqli_query($conn, $query);
-									while ($row = mysqli_fetch_assoc($result)) {
-            		?>
-								<div class="">
-									<input type="text" name="id" hidden>
-								</div>
-								<div class="mb-3">
-									<label for="menu" class="form-label">Menu</label>
-									<input type="text" name="menu" class="form-control" id="price" value="<?php echo $row['menu']; ?>" required>
-								</div>
-								<div class="mb-3">
-									<label for="price" class="form-label">Price</label>
-									<input type="email" name="harga" class="form-control" id="price" value="<?php echo $row['harga']; ?>" required>
-								</div>
-								<div class="mb-3">
-									<label for="desk" class="form-label">Password</label>
-									<input type="password" name="deskripsi" class="form-control" id="desk" value="<?php echo $row['deskripsi']; ?>" required>
-								</div>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-								<button type="submit" class="btn btn-primary float-end" value="update">Update</button>
-								<?php
-            }
-            ?>
-							</form>
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="modal fade" id="deleteMenu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content" id="deleteMenu<?php echo $no; ?>">
-						<div class="modal-header">
-							<h5 class="modal-title">Delete Account</h5>
-						</div>
-						<div class="modal-body">
-							<h4>Delete <?php echo $row['menu'];?> from database?</h4>
-						</div>
-						<div class="modal-footer">
-	            <button id="nodelete" type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Cancel</button>
-	            <a href="menu_process.php?act=deleteMenu&id=<?php echo $row['id']; ?>" class="btn btn-primary">Delete</a>
-	          </div>
-					</div>
 				</div>
 			</div>
 		</main>
@@ -228,13 +178,6 @@
 		searching: true,
 		ordering: true,
 		stateSave: true,
-		columnDefs: [
-				{
-						targets: -1,
-						data: null,
-						defaultContent: '<button class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editMenu"><i class="bx bxs-edit"></i></button><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteMenu"><i class="bx bxs-trash"></i></button>',
-				},
-		],
 		language: {
 			search: '',
 			searchPlaceholder: "Search",

@@ -1,3 +1,14 @@
+<?php
+//memulai session yang disimpan pada browser
+session_start();
+
+//cek apakah sesuai status sudah login? kalau belum akan kembali ke form login
+if($_SESSION['status']!="sudah_login"){
+//melakukan pengalihan
+header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +78,7 @@
 		</ul>
 		<ul class="side-menu ps-0">
 			<li>
-				<a href="login.html" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -82,7 +93,7 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
 
-			<p class="name mb-0">Halo, Reza!</p>
+			<p class="name mb-0">Halo, <?php echo $_SESSION['username']; ?>!</p>
 			<div class="ml-auto">
 				<p class="title mb-0">Restaurant Management System</p>
 			</div>
