@@ -1,6 +1,6 @@
 <?php
 // memanggil file koneksi.php untuk melakukan koneksi database
-include '../../config.php';
+  require_once '../../config.php';
 
 	// membuat variabel untuk menampung data dari form
   $id_promo = $_POST['id_promo'];
@@ -28,7 +28,7 @@ include '../../config.php';
                             " - ".mysqli_error($conn));
                    } else {
                      //tampil alert dan akan redirect ke halaman index.php
-                     echo "<script>alert('Data berhasil diubah.');window.location='../../promo-dashboard.php';</script>";
+                     echo "<script>window.location='../../promo-dashboard.php';</script>";
                    }
               } else {
                //jika file ekstensi tidak jpg dan png maka alert ini yang tampil
@@ -45,6 +45,6 @@ include '../../config.php';
                              " - ".mysqli_error($conn));
       } else {
         //tampil alert dan akan redirect ke halaman index.php
-          echo "<script>alert('Data berhasil diubah.');window.location='../../promo-dashboard.php';</script>";
+          echo "<script>window.location='../../promo-dashboard.php';</script>";
       }
     }

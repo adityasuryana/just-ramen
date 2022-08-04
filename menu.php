@@ -119,7 +119,7 @@ header("location:login.php");
 				        <h5 class="modal-title" id="staticBackdropLabel">New Menu</h5>
 				      </div>
 				      <div class="modal-body">
-								<form method="POST" action="process/menu_db/insert_data.php">
+								<form method="POST" action="process/menu_db/insert_data.php" enctype="multipart/form-data">
 									<input type="text" class="form-control" name="id" hidden>
 									<div class="mb-3">
 								    <label for="menu" class="form-label">Menu</label>
@@ -132,6 +132,10 @@ header("location:login.php");
 								  <div class="mb-3">
 								    <label for="desc" class="form-label">Description</label>
 								    <textarea class="form-control" name="deskripsi" id="desc" rows="3"></textarea>
+								  </div>
+									<div class="mb-3">
+								    <label for="img" class="form-label">Image</label>
+								    <input type="file" class="form-control" id="img" name="img_menu" rows="3"></input>
 								  </div>
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 								  <button type="submit" class="btn btn-primary float-end">Add</button>
@@ -147,19 +151,21 @@ header("location:login.php");
 					<table id="table">
 						<thead>
 							<tr>
-								<th>Menu</th>
-								<th>Price</th>
-								<th>Description</th>
+								<th class="w-25 text-justify">Menu</th>
+								<th class="">Price</th>
+								<th class="w-25 text-justify">Description</th>
+								<th>Image</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php while($menu = mysqli_fetch_assoc($result)) { ?>
 								<tr>
-									<td><?php echo $menu['menu']; ?></td>
+									<td style="display: table-cell;"><?php echo $menu['menu']; ?></td>
 									<td><?php echo $menu['harga']; ?></td>
-									<td><?php echo $menu['deskripsi']; ?></td>
-									<td>
+									<td class="text-justify"><?php echo $menu['deskripsi']; ?></td>
+									<td class="text-center"><img class="rounded-0" style="max-height: 100px!important;" src="assets/img/menu/<?php echo $menu['img_menu']; ?>"></td>
+									<td class="text-center">
 										<a class="btn btn-edit me-2" href="process/menu_db/update_data_form.php?id=<?php echo $menu['id']; ?>"><i class="bx bxs-edit"></i></a>
 										<a class="btn btn-danger" href="process/menu_db/delete_data.php?id=<?php echo $menu['id']; ?>"><i class="bx bxs-trash"></i></a></td>
 								</tr>

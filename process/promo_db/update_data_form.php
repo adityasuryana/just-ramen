@@ -11,11 +11,9 @@
     <?php
         require_once('../../config.php');
         $id_promo = $_GET['id_promo'];
-
         $query = "SELECT * FROM promo WHERE id_promo = '$id_promo'";
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
-
     ?>
 
     <div class="container">
@@ -32,7 +30,7 @@
                     </div>
                     <div class="form-group mt-2">
                       <label for="desc" class="form-label">Description</label>
-  								    <textarea type="text" class="form-control" value="<?php echo $row['desc_promo']; ?>" name="desc_promo" id="desc"></textarea>
+  								    <textarea type="text" class="form-control" name="desc_promo" id="desc"><?php echo $row['desc_promo']; ?></textarea>
                     </div>
                     <div class="form-group mt-2">
                         <label>Image</label>

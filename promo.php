@@ -25,13 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item me-3">
-              <a class="nav-link" href="#">Menu</a>
+              <a class="nav-link" href="menu-ramen.php">Menu</a>
             </li>
             <li class="nav-item me-3">
               <a class="nav-link" href="promo.php">Promo</a>
             </li>
             <li class="nav-item me-3">
-              <a class="nav-link" href="#">Cart</a>
+              <a class="nav-link" href="order.php">Order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.php">Login</a>
@@ -64,11 +64,13 @@
                                 <div class='row'>
                                   <div class='col-8'>
                                     <h1 class='promo-title'>".$row['title_promo']."</h1>
-                                    <p class='promo-desc mb-0'>".$row['desc_promo']."</p>
+                                    <p class='promo-desc mt-3 mb-0'>".$row['desc_promo']."</p>
                                   </div>
 
-                                  <div class='col-4 text-end'>
-                                    <img class='' style='max-height: 180px;' src='assets/img/promo/".$row['img_promo']."'></img>
+                                  <div class='col-1'></div>
+
+                                  <div class='col-3 text-end'>
+                                    <img class='w-100' style='max-height: 180px;' src='assets/img/promo/".$row['img_promo']."'></img>
                                   </div>
                                 </div>
 

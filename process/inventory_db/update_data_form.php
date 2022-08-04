@@ -25,7 +25,7 @@
     <div class="container">
         <div class="card mt-4" id="form-body">
             <div class="card-header">
-                Update Data
+                Update Inventory
             </div>
             <div class="card-body">
                 <form method="post" action="update_data.php">

@@ -9,15 +9,10 @@
 <body>
 
     <?php
-
         require_once('../../config.php');
-
         $id = $_GET['id'];
-
         $query = "SELECT * FROM menu WHERE id='$id'";
-
-        $result = mysqli_query($conn,$query);
-
+        $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($result);
 
     ?>
@@ -25,10 +20,10 @@
     <div class="container">
         <div class="card mt-4" id="form-body">
             <div class="card-header">
-                Update Data
+                Update Menu
             </div>
             <div class="card-body">
-                <form method="post" action="update_data.php">
+                <form method="post" action="update_data.php" enctype="multipart/form-data">
                     <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
                     <div class="form-group">
                         <label>Menu</label>
@@ -41,6 +36,10 @@
                     <div class="form-group mt-2">
                         <label>Description</label>
                         <input type="text" value="<?php echo $row['deskripsi']; ?>" class="form-control" name="deskripsi" placeholder="Enter Description">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label>Image</label>
+                        <input type="file" value="<?php echo $row['img_menu']; ?>" class="form-control" name="img_menu">
                     </div>
                     <button type="submit" class="btn btn-primary mt-2" id="submit">Submit</button>
                 </form>

@@ -147,8 +147,8 @@ header("location:login.php");
 					<table id="table">
 						<thead>
 							<tr>
-								<th>Title</th>
-								<th>Description</th>
+								<th class="w-25 text-justify">Title</th>
+								<th class="w-25 text-justify">Description</th>
 								<th>Image</th>
 								<th></th>
 							</tr>
@@ -156,9 +156,9 @@ header("location:login.php");
 						<tbody>
 							<?php while($promo = mysqli_fetch_assoc($result)) { ?>
 								<tr>
-									<td><?php echo $promo['title_promo']; ?></td>
-									<td><?php echo $promo['desc_promo']; ?></td>
-									<td><img class="rounded-0" src="assets/img/promo/<?php echo $promo['img_promo']; ?>"</td>
+									<td style="display: table-cell;"><?php echo $promo['title_promo']; ?></td>
+									<td class="text-justify"><?php echo $promo['desc_promo']; ?></td>
+									<td class="text-center"><img class="rounded-0" src="assets/img/promo/<?php echo $promo['img_promo']; ?>"></td>
 									<td class="text-center">
 										<a class="btn btn-edit me-2" href="process/promo_db/update_data_form.php?id_promo=<?php echo $promo['id_promo']; ?>"><i class="bx bxs-edit"></i></a>
 										<a class="btn btn-danger" href="process/promo_db/delete_data.php?id_promo=<?php echo $promo['id_promo']; ?>"><i class="bx bxs-trash"></i></a>
