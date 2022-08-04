@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Edit Promo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style-beta.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
@@ -17,10 +19,8 @@
     ?>
 
     <div class="container">
-        <div class="card mt-4" id="form-body">
-            <div class="card-header">
-                Update Promo
-            </div>
+        <div class="card bg-white mt-4 w-75  position-absolute top-50 start-50 translate-middle" id="form-body">
+            <div class="card-header bg-white">Update Promo</div>
             <div class="card-body">
                 <form method="post" action="update_data.php" enctype="multipart/form-data">
                     <input type="hidden" value="<?php echo $row['id_promo']; ?>" name="id_promo">
@@ -36,7 +36,7 @@
                         <label>Image</label>
                         <input type="file" value="<?php echo $row['img_promo']; ?>" class="form-control" name="img_promo">
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2" id="submit">Submit</button>
+                    <button type="submit" class="btn btn-edit mt-4" id="submit">Edit</button>
                 </form>
             </div>
         </div>

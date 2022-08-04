@@ -114,7 +114,7 @@ header("location:login.php");
 
 				<div class="modal fade" id="addMenu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-dialog-centered">
-				    <div class="modal-content">
+				    <div class="modal-content" style="border: none; border-radius: 20px;">
 				      <div class="modal-header">
 				        <h5 class="modal-title" id="staticBackdropLabel">New Menu</h5>
 				      </div>
@@ -138,7 +138,7 @@ header("location:login.php");
 								    <input type="file" class="form-control" id="img" name="img_menu" rows="3"></input>
 								  </div>
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-								  <button type="submit" class="btn btn-primary float-end">Add</button>
+								  <button type="submit" class="btn btn-green float-end">Add</button>
 								</form>
 				      </div>
 				    </div>
@@ -154,7 +154,7 @@ header("location:login.php");
 								<th class="w-25 text-justify">Menu</th>
 								<th class="">Price</th>
 								<th class="w-25 text-justify">Description</th>
-								<th>Image</th>
+								<th class="text-center">Image</th>
 								<th></th>
 							</tr>
 						</thead>

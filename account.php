@@ -115,7 +115,7 @@ header("location:login.php");
 				<!-- Modal -->
 				<div class="modal fade" id="addAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-dialog-centered">
-				    <div class="modal-content">
+				    <div class="modal-content" style="border: none; border-radius: 20px;">
 				      <div class="modal-header">
 				        <h5 class="modal-title">New Account</h5>
 				      </div>
@@ -137,7 +137,7 @@ header("location:login.php");
 								    <input type="password" name="password" class="form-control" id="password" required>
 								  </div>
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-								  <button type="submit" id="submit" class="btn btn-primary float-end">Add</button>
+								  <button type="submit" id="submit" class="btn btn-green float-end">Add</button>
 								</form>
 				      </div>
 				    </div>
@@ -162,7 +162,7 @@ header("location:login.php");
 									<td><?php echo $user['username']; ?></td>
 									<td><?php echo $user['email']; ?></td>
 									<td><?php echo $user['password']; ?></td>
-									<td>
+									<td class="text-center">
 										<a class="btn btn-edit me-2" href="process/account_db/update_data_form.php?id=<?php echo $user['id']; ?>"><i class="bx bxs-edit"></i></a>
 										<a class="btn btn-danger" href="process/account_db/delete_data.php?id=<?php echo $user['id']; ?>"><i class="bx bxs-trash"></i></a>
 									</td>

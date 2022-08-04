@@ -619,3 +619,8 @@ body {
 		min-width: 420px;
 	}
 }
+
+.modal-content-custom {
+  border : none;
+  border-radius: 20px!important;
+}
