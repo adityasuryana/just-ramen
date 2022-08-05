@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png">
     <title>just ramen</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="splide/css/splide.min.css">
@@ -26,9 +27,6 @@
             <li class="nav-item me-3">
               <a class="nav-link" href="promo.php">Promo</a>
             </li>
-            <li class="nav-item me-3">
-              <a class="nav-link" href="order.php">Order</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="login.php">Login</a>
             </li>
@@ -47,7 +45,7 @@
             </div>
 
             <div class="header-link">
-              <a class="want-ramen" href="#">i want ramen!<img class="ms-3" src="assets/icon/left-rounded-arrow.svg" alt=""></a>
+              <a class="want-ramen" href="menu-ramen.php">explore ramen!<img class="ms-3" src="assets/icon/left-rounded-arrow.svg" alt=""></a>
             </div>
           </div>
         </div>
@@ -98,7 +96,7 @@
           <div class="splide__track pt-3 p-5">
         		<ul class="splide__list">
         			<li class="splide__slide px-4">
-                <div class="card py-5">
+                <div class="card py-5 h-100">
                   <img class="menu-img w-100" src="assets/img/cold-hiyasi.png" alt="">
                   <div class="text-center mt-4">
                     <h5 class="menu-title">Cold Hiyasi</h5>
@@ -109,7 +107,7 @@
               </li>
 
         			<li class="splide__slide px-4">
-                <div class="card py-5">
+                <div class="card py-5 h-100">
                   <img class="menu-img w-100" src="assets/img/vegan-ramen.png" alt="">
                   <div class="text-center mt-4">
                     <h5 class="menu-title">Vegan Ramen</h5>
@@ -120,7 +118,7 @@
               </li>
 
         			<li class="splide__slide px-4">
-                <div class="card py-5">
+                <div class="card py-5 h-100">
                   <img class="menu-img w-100" src="assets/img/spicy-miso.png" alt="">
                   <div class="text-center mt-4">
                     <h5 class="menu-title">Spicy Miso</h5>
@@ -131,7 +129,7 @@
               </li>
 
               <li class="splide__slide px-4">
-                <div class="card py-5">
+                <div class="card py-5 h-100">
                   <img class="menu-img w-100" src="assets/img/tan-tan-men.png" alt="">
                   <div class="text-center mt-4">
                     <h5 class="menu-title">Tan-Tan Men</h5>
@@ -142,7 +140,7 @@
               </li>
 
               <li class="splide__slide px-4" width="auto">
-                <div class="card py-5">
+                <div class="card py-5 h-100">
                   <img class="menu-img w-100" src="assets/img/tonkotsu.png" alt="">
                   <div class="text-center mt-4">
                     <h5 class="menu-title">Tonkotsu</h5>
@@ -153,7 +151,7 @@
               </li>
 
               <li class="splide__slide px-4">
-                <div class="card py-5">
+                <div class="card py-5 h-100">
                   <img class="menu-img w-100" src="assets/img/shio-chicken-ramen.png" alt="">
                   <div class="text-center mt-4">
                     <h5 class="menu-title">Shio Chicken Ramen</h5>
@@ -171,14 +169,14 @@
 <section class="footer">
   <div class="container">
     <footer class="row row-cols-4 py-5 mt-4">
-      <div class="col">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
         <a href="index.html" class="navbar-brand d-flex align-items-center mb-3 d-inline-flex">just ramen</a>
         <p class="desc text-justify">a well known japanese restaurant in Bandung. Specialized on ramen and any japanese foods.</p>
       </div>
 
-      <div class="col"></div>
+      <div class="col-xl-1 col-lg-1 col-md-0 col-sm-0"></div>
 
-      <div class="col">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
         <h5 class="nav-col mb-3">Social Media</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 d-inline-flex">Twitter</a></li>
@@ -187,14 +185,13 @@
         </ul>
       </div>
 
-      <div class="col">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
         <h5 class="nav-col mb-3">Our Links</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 d-inline-flex">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 d-inline-flex">Menu</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 d-inline-flex">Promo</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 d-inline-flex">Cart</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 d-inline-flex">Login</a></li>
+          <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 d-inline-flex">Home</a></li>
+          <li class="nav-item mb-2"><a href="menu.php" class="nav-link p-0 d-inline-flex">Menu</a></li>
+          <li class="nav-item mb-2"><a href="promo.php" class="nav-link p-0 d-inline-flex">Promo</a></li>
+          <li class="nav-item mb-2"><a href="login.php" class="nav-link p-0 d-inline-flex">Login</a></li>
         </ul>
       </div>
     </footer>

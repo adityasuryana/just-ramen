@@ -22,7 +22,7 @@ header("location:login.php");
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/style-beta.css">
-
+	<link rel="icon" type="image/png" href="assets/icon/favicon.png">
 	<title>Account | just ramen</title>
 </head>
 <body>
@@ -36,7 +36,7 @@ header("location:login.php");
 	<!-- SIDEBAR -->
 	<section id="sidebar" class="hide">
 		<a href="index.php" class="brand">
-			<i class='bx bxs-smile'></i>
+			<i class='bx bxs-cog'></i>
 			<span class="ml-2">just ramen</span>
 		</a>
 		<ul class="side-menu top ps-0">

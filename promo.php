@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png">
     <title>Promo | just ramen</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   	<!-- CSS -->
@@ -29,9 +30,6 @@
             </li>
             <li class="nav-item me-3">
               <a class="nav-link" href="promo.php">Promo</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link" href="order.php">Order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.php">Login</a>
